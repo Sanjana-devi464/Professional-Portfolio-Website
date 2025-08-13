@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sanjana Devi - Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Sanjana Devi, a Full Stack Developer & AI Enthusiast specializing in React, Node.js, and Machine Learning.">
+    <meta name="keywords" content="Sanjana Devi, Full Stack Developer, React, Node.js, MongoDB, AI, Machine Learning, Portfolio">
+    <meta name="author" content="Sanjana Devi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sanjana-devi464.github.io/Professional-Portfolio-Website/">
+    <meta property="og:title" content="Sanjana Devi - Full Stack Developer">
+    <meta property="og:description" content="Full Stack Developer & AI Enthusiast building modern web apps with React, Node.js, and AI.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sanjana-devi464.github.io/Professional-Portfolio-Website/">
+    <meta property="og:image" content="https://i.ibb.co/Mkrr5B1F/Pi7-Passport-Photo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sanjana Devi - Full Stack Developer">
+    <meta name="twitter:description" content="Full Stack Developer & AI Enthusiast building modern web apps with React, Node.js, and AI.">
+    <meta name="twitter:image" content="https://i.ibb.co/Mkrr5B1F/Pi7-Passport-Photo.jpg">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="icon" href="https://i.ibb.co/Mkrr5B1F/Pi7-Passport-Photo.jpg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -574,6 +590,9 @@
             box-shadow: var(--shadow-light);
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .project-card::before {
@@ -611,9 +630,11 @@
         }
 
         .project-content {
-            padding: 2rem;
+            padding: 1.5rem 1.5rem 1.25rem;
             position: relative;
             z-index: 2;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-title {
@@ -633,6 +654,30 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1.5rem;
+        }
+        /* Keep actions pinned to bottom inside cards */
+        .project-content > .hero-buttons {
+            margin-top: auto;
+        }
+
+        /* Smaller buttons inside project cards */
+        .project-content .hero-buttons {
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .project-content .btn {
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            box-shadow: none;
+        }
+
+        /* Focus/hover accessibility for cards */
+        .project-card:focus-within {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.01);
         }
 
         .tech-tag {
@@ -905,6 +950,109 @@
             transition: width 0.1s ease;
         }
 
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-medium);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+            z-index: 9999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Project Filters */
+        .filter-controls {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* Filter animation helpers */
+        .project-card {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .project-card.filter-hide {
+            opacity: 0;
+            transform: scale(0.96);
+        }
+        .project-card.hidden-by-filter {
+            display: none !important;
+        }
+
+        /* Project image thumbnails */
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* GitHub badges */
+        .repo-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            box-shadow: var(--shadow-light);
+        }
+        .badge i { margin-right: 0.35rem; }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -983,6 +1131,10 @@
 <body>
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -993,6 +1145,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1147,8 +1300,15 @@
     <section id="projects" class="section projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
+            <div class="filter-controls" id="projectFilters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="nextjs">Next.js</button>
+            </div>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-category="ai">
                     <div class="project-image">
                         <i class="fas fa-robot"></i>
                     </div>
@@ -1166,7 +1326,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-category="fullstack ai">
                     <div class="project-image">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
@@ -1185,7 +1345,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <div class="project-image">
                         <i class="fas fa-user-circle"></i>
                     </div>
@@ -1202,7 +1362,169 @@
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">Responsive Design</span>
                         </div>
+                        <a class="btn btn-primary" href="https://github.com/Sanjana-devi464/Professional-Portfolio-Website" target="_blank" rel="noopener">View Code</a>
                     </div>
+                </div>
+
+                <!-- New Projects Added -->
+        <div class="project-card" data-category="fullstack ai web nextjs" data-repo="Sanjana-devi464/TrendWise">
+                    <div class="project-image">
+                        <img src="https://raw.githubusercontent.com/Sanjana-devi464/TrendWise/main/public/og-image.png" alt="TrendWise project screenshot" loading="lazy" onerror="this.closest('.project-image').innerHTML='<i class=\'fas fa-chart-line\'></i>'">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">TrendWise</h3>
+                        <p class="project-description">
+                            AI-powered blog platform with Google Gemini integration, dynamic SEO, and performance-first Next.js 15 architecture.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">TailwindCSS</span>
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">Google OAth</span>
+                            <span class="tech-tag">Mongo DB Atlas</span>
+                        </div>
+                        <div class="repo-badges" data-repo="Sanjana-devi464/TrendWise"></div>
+                        <div class="hero-buttons" style="gap:0.75rem; margin-top:0.5rem;">
+                            <a class="btn btn-primary" href="https://github.com/Sanjana-devi464/TrendWise" target="_blank" rel="noopener">View Code</a>
+                            <a class="btn btn-secondary" href="https://trend-wise-kappa.vercel.app/" target="_blank" rel="noopener">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="fullstack web" data-repo="Sanjana-devi464/rails-authentication-system">
+                    <div class="project-image">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Rails Authentication System</h3>
+                        <p class="project-description">
+                            Modern Ruby on Rails authentication with Devise, role-based access (Rolify), and a CMS-like blog with analytics.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Ruby on Rails</span>
+                            <span class="tech-tag">Devise</span>
+                            <span class="tech-tag">Rolify</span>
+                        </div>
+                        <div class="repo-badges" data-repo="Sanjana-devi464/rails-authentication-system"></div>
+                        <div class="hero-buttons" style="gap:0.75rem; margin-top:0.5rem;">
+                            <a class="btn btn-primary" href="https://github.com/Sanjana-devi464/rails-authentication-system" target="_blank" rel="noopener">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="project-card" data-category="fullstack web nextjs" data-repo="Sanjana-devi464/nextjs-data-table-app">
+                    <div class="project-image">
+                        <img src="https://raw.githubusercontent.com/Sanjana-devi464/nextjs-data-table-app/master/public/og-image.png" alt="Next.js Data Table App screenshot" loading="lazy" onerror="this.closest('.project-image').innerHTML='<i class=\'fas fa-table\'></i>'">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Next.js Data Table App</h3>
+                        <p class="project-description">
+                            Dynamic data table manager with Redux Toolkit, MUI, CSV import/export, drag-and-drop, and theme persistence.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Redux Toolkit</span>
+                            <span class="tech-tag">Material UI</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                        <div class="repo-badges" data-repo="Sanjana-devi464/nextjs-data-table-app"></div>
+                        <div class="hero-buttons" style="gap:0.75rem; margin-top:0.5rem;">
+                            <a class="btn btn-primary" href="https://github.com/Sanjana-devi464/nextjs-data-table-app" target="_blank" rel="noopener">View Code</a>
+                            <a class="btn btn-secondary" href="https://nextjs-data-table-app.vercel.app/" target="_blank" rel="noopener">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="project-card" data-category="web" data-repo="Sanjana-devi464/landing-page">
+                    <div class="project-image">
+                        <img src="https://raw.githubusercontent.com/Sanjana-devi464/landing-page/main/screenshot.png" alt="Landing Page screenshot" loading="lazy" onerror="this.closest('.project-image').innerHTML='<i class=\'fas fa-rocket\'></i>'">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Landing Page</h3>
+                        <p class="project-description">
+                            A polished, responsive landing page built with semantic HTML and modern CSS, focused on accessibility.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="repo-badges" data-repo="Sanjana-devi464/landing-page"></div>
+                        <div class="hero-buttons" style="gap:0.75rem; margin-top:0.5rem;">
+                            <a class="btn btn-primary" href="https://github.com/Sanjana-devi464/landing-page" target="_blank" rel="noopener">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- StudyLoops Project -->
+                <div class="project-card" data-category="web ai">
+                    <div class="project-image">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">StudyLoops Educational Platform</h3>
+                        <p class="project-description">
+                            An educational platform providing syllabus, notes, previous papers, and practicals across engineering branches,
+                            featuring an AI-powered tutor for instant learning assistance.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Education</span>
+                            <span class="tech-tag">AI Tutor</span>
+                            <span class="tech-tag">Netlify</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                        <div class="hero-buttons" style="gap:0.75rem; margin-top:0.5rem;">
+                            <a class="btn btn-secondary" href="https://studyloops.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section">
+        <div class="container">
+            <h2 class="section-title">Resume</h2>
+            <div class="about-content" style="align-items: stretch;">
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <p>Major Projects</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6+</div>
+                        <p>Certifications</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">95%</div>
+                        <p>AI Accuracy</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2024</div>
+                        <p>SIH Participant</p>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>
+                        Download my latest resume for a concise overview of my skills, projects,
+                        certifications, and education. I'm seeking roles in Full-Stack Development
+                        and AI-driven applications.
+                    </p>
+                    <div class="hero-buttons" style="margin-top: 1rem;">
+                        <a class="btn btn-primary" href="https://drive.google.com/file/d/1__UhXESpib6zQnyD-Jn1ZthJaFu3tIwJ/view?usp=drive_open" target="_blank" rel="noopener">Download Resume</a>
+                        <a class="btn btn-secondary" href="#contact">Hire Me</a>
+                    </div>
+                    <ul style="margin-top: 1.5rem; color: var(--text-secondary);">
+                        <li>Programming Languages: Java, JavaScript, C++, C, Python, PHP, HTML5, CSS3 </li>
+                        <li>Frontend Technologies: Next.js, React.js, Bootstrap, Responsive Design, DOM Manipulation</li>
+                        <li>Backend Technologies: Node.js, Express.js, RESTful APIs, Server-side Development </li>
+                        <li>Databases: MongoDB, MySQL, Database Design & Optimization </li>
+                        <li>Development Tools: VS Code, Git/GitHub, Postman, Netlify, npm/yarn </li>
+                        <li>Core Computer Science: OOPS, DSA, DBMS, CN, Operating Systems. </li>
+                        <li>Currently Learning: Docker, AWS Cloud Services, Azure, DevOps Practices</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1316,13 +1638,13 @@
                     </div>
                     
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/sanjana-devi-6719b1359/" class="social-link">
+                        <a href="https://www.linkedin.com/in/sanjana-devi-6719b1359/" class="social-link" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/Sanjana-devi464" class="social-link">
+                        <a href="https://github.com/Sanjana-devi464" class="social-link" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="sanjanade464@gmail.com" class="social-link">
+                        <a href="mailto:sanjanade464@gmail.com" class="social-link" aria-label="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
@@ -1330,7 +1652,7 @@
                 
                 <div class="contact-form">
                     <h3 style="margin-bottom: 1.5rem;">Send Message</h3>
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -1364,18 +1686,49 @@
     </footer>
 
     <script>
-        // Dark Mode Toggle
+        // SEO: Structured Data
+        const orgSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Sanjana Devi',
+            url: 'https://sanjana-devi464.github.io/Professional-Portfolio-Website/',
+            sameAs: [
+                'https://www.linkedin.com/in/sanjana-devi-6719b1359/',
+                'https://github.com/Sanjana-devi464'
+            ],
+            jobTitle: 'Full Stack Developer',
+            image: 'https://i.ibb.co/Mkrr5B1F/Pi7-Passport-Photo.jpg'
+        };
+        const ld = document.createElement('script');
+        ld.type = 'application/ld+json';
+        ld.textContent = JSON.stringify(orgSchema);
+        document.head.appendChild(ld);
+
+        // Dark Mode Toggle with persistence
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
         const icon = darkModeToggle.querySelector('i');
+        const THEME_KEY = 'theme-preference';
+
+        function applyTheme(theme) {
+            const isDark = theme === 'dark';
+            body.classList.toggle('dark-mode', isDark);
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem(THEME_KEY);
+            if (stored === 'dark' || stored === 'light') return stored;
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        applyTheme(getPreferredTheme());
 
         darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                icon.className = 'fas fa-sun';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
+            const current = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            localStorage.setItem(THEME_KEY, next);
+            applyTheme(next);
         });
 
         // Mobile Menu Toggle
@@ -1461,39 +1814,32 @@
             item.style.animationDelay = `${index * 0.15}s`;
         });
 
-        // Contact Form Handling
+        // Contact Form Handling (ID-safe)
         const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Simple form validation
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = contactForm.querySelector('button');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for your message! I\'ll get back to you soon.');
-                contactForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const subject = formData.get('subject');
+                const message = formData.get('message');
+                if (!name || !email || !subject || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                const submitBtn = contactForm.querySelector('button');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                setTimeout(() => {
+                    alert('Thank you for your message! I\'ll get back to you soon.');
+                    contactForm.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            });
+        }
 
         // Particle Animation Effect
         function createParticle() {
@@ -1601,6 +1947,104 @@
         statNumbers.forEach(stat => {
             statsObserver.observe(stat);
         });
+
+        // Back to Top visibility + behavior
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Project Filters
+        const filterContainer = document.getElementById('projectFilters');
+        const filterButtons = filterContainer ? filterContainer.querySelectorAll('.filter-btn') : [];
+        const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+        function applyFilter(filter) {
+            projectCards.forEach(card => {
+                const categories = (card.getAttribute('data-category') || '').split(/\s+/).filter(Boolean);
+                const shouldShow = filter === 'all' || categories.includes(filter);
+
+                const isCurrentlyHidden = card.classList.contains('hidden-by-filter');
+                const isAnimatingOut = card.classList.contains('filter-hide');
+
+                if (shouldShow) {
+                    if (isCurrentlyHidden) {
+                        // Prepare for fade-in
+                        card.classList.remove('hidden-by-filter');
+                        card.classList.add('filter-hide');
+                        // Force reflow to ensure transition triggers
+                        void card.offsetHeight;
+                        card.classList.remove('filter-hide');
+                    }
+                } else {
+                    if (!isCurrentlyHidden && !isAnimatingOut) {
+                        // Fade-out then hide from layout
+                        card.classList.add('filter-hide');
+                        card.addEventListener('transitionend', () => {
+                            card.classList.add('hidden-by-filter');
+                            card.classList.remove('filter-hide');
+                        }, { once: true });
+                    }
+                }
+            });
+        }
+
+        if (filterContainer) {
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    applyFilter(btn.dataset.filter);
+                });
+            });
+        }
+
+        // GitHub badges (stars/forks) with simple caching
+        async function getRepoStats(repoFullName) {
+            const cacheKey = `gh-stats:${repoFullName}`;
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+                try {
+                    const { data, ts } = JSON.parse(cached);
+                    // Reuse cache for 12 hours
+                    if (Date.now() - ts < 12 * 60 * 60 * 1000) return data;
+                } catch {}
+            }
+            try {
+                const res = await fetch(`https://api.github.com/repos/${repoFullName}`);
+                if (!res.ok) throw new Error('GitHub API error');
+                const json = await res.json();
+                const data = {
+                    stars: json.stargazers_count || 0,
+                    forks: json.forks_count || 0,
+                };
+                localStorage.setItem(cacheKey, JSON.stringify({ data, ts: Date.now() }));
+                return data;
+            } catch (e) {
+                return { stars: 0, forks: 0 };
+            }
+        }
+
+        async function renderRepoBadges() {
+            const holders = document.querySelectorAll('.repo-badges[data-repo]');
+            holders.forEach(async holder => {
+                const repo = holder.getAttribute('data-repo');
+                const { stars, forks } = await getRepoStats(repo);
+                holder.innerHTML = `
+                    <span class="badge"><i class="fas fa-star"></i>${stars}</span>
+                    <span class="badge"><i class="fas fa-code-branch"></i>${forks}</span>
+                `;
+            });
+        }
+
+        renderRepoBadges();
     </script>
 </body>
 </html>
